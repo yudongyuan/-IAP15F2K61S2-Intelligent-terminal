@@ -1,0 +1,11 @@
+".\Objects\蓝桥杯基本模板构建.obj",
+".\Objects\tim.obj",
+".\Objects\key.obj",
+".\Objects\seg.obj",
+".\Objects\iic.obj",
+".\Objects\onewire.obj",
+".\Objects\ds1302.obj",
+".\Objects\ultrasonic.obj",
+".\Objects\uart.obj" 
+TO ".\Objects\蓝桥杯基本模板构建" 
+PRINT(".\Listings\蓝桥杯基本模板构建.m51") RAMSIZE(256) 

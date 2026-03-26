@@ -1,0 +1,20 @@
+tim
+key
+seg
+onewire 温度
+ds1302 时钟
+uart 串口
+iic EEPROM AD DA
+ultrasonic 超声波
+NE555当频率模块出现时要小心
+
+其可能会和矩阵按键模块、超声波模块出现冲突
+单片机头文件是IAP15F2K61S2
+若比赛没有该头文件，按以下步骤
+1.打开STC—ISP
+2.打开Keil仿真设置
+3.点击添加型号和头文件到Keil中，该目录为Keil的文件的安装地址，里面要有
+C51目录和UVx
+4.找到C51\INC\STC里面的STC15F2K60S2.h头文件，若有即可以在keil中使用该头文件
+关键在于找到含有C51目录和UVx的文件，然后放入该头文件即可。
+频率是12MHz

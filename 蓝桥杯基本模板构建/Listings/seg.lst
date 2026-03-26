@@ -1,0 +1,75 @@
+C51 COMPILER V9.55   SEG                                                                   04/02/2023 16:18:54 PAGE 1   
+
+
+C51 COMPILER V9.55, COMPILATION OF MODULE SEG
+OBJECT MODULE PLACED IN .\Objects\seg.obj
+COMPILER INVOKED BY: D:\keil5\C51\BIN\C51.EXE seg.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\seg.lst
+                    -) TABS(2) OBJECT(.\Objects\seg.obj)
+
+line level    source
+
+   1          #include "seg.h"
+   2          
+   3          void Seg_Tran(unsigned char *Seg_Buf,unsigned char *Seg_Code)
+   4          {
+   5   1        unsigned char i,j=0,temp;
+   6   1        for(i=0;i<8;i++,j++)
+   7   1        {
+   8   2          switch(Seg_Buf[j])//这个地方是j不是i，因为j代表字符串的位置，i是转换好的码，所以前面都是j最后是i
+   9   2          {
+  10   3            case '0': temp=0xc0; break;
+  11   3            case '1': temp=0xf9; break;
+  12   3            case '2': temp=0xa4; break;
+  13   3            case '3': temp=0xb0; break;
+  14   3            case '4': temp=0x99; break;
+  15   3            case '5': temp=0x92; break;
+  16   3            case '6': temp=0x82; break;
+  17   3            case '7': temp=0xf8; break;
+  18   3            case '8': temp=0x80; break;
+  19   3            case '9': temp=0x90; break;
+  20   3            case '-': temp=0xbf; break;
+  21   3            case ' ': temp=0xff; break;
+  22   3            default: temp=0xff;//注意是0xff
+  23   3          }
+  24   2          if(Seg_Buf[j+1]=='.')
+  25   2          {
+  26   3            temp=temp&0x7f;//这里是与，但是我写错成或了
+  27   3            j++;//注意是j++
+  28   3          }
+  29   2          Seg_Code[i]=temp;
+  30   2        }
+  31   1      }
+  32          
+  33          void Seg_Disp(unsigned char *Seg_Code,unsigned char Seg_Pos)
+  34          {
+  35   1        P0=0xff;
+  36   1        P2=P2&0x1f|0xe0;
+  37   1        P2=P2&0x1f;
+  38   1        P0=1<<Seg_Pos;
+  39   1        P2=P2&0x1f|0xc0;
+  40   1        P2=P2&0x1f;
+  41   1        P0=Seg_Code[Seg_Pos];
+  42   1        P2=P2&0x1f|0xe0;
+  43   1        P2=P2&0x1f;
+  44   1      }
+  45          
+  46          
+  47          
+  48          
+  49          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    269    ----
+   CONSTANT SIZE    =   ----    ----
+C51 COMPILER V9.55   SEG                                                                   04/02/2023 16:18:54 PAGE 2   
+
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       9
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

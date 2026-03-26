@@ -1,0 +1,54 @@
+C51 COMPILER V9.55   TIM                                                                   04/02/2023 16:18:53 PAGE 1   
+
+
+C51 COMPILER V9.55, COMPILATION OF MODULE TIM
+OBJECT MODULE PLACED IN .\Objects\tim.obj
+COMPILER INVOKED BY: D:\keil5\C51\BIN\C51.EXE tim.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\tim.lst
+                    -) TABS(2) OBJECT(.\Objects\tim.obj)
+
+line level    source
+
+   1          #include "tim.h"
+   2          
+   3          void Cls_p(void)
+   4          {
+   5   1        P0=0xff;
+   6   1        P2=P2&0x1f|0x80;
+   7   1        P2=P2&0x1f;
+   8   1        P0=0;
+   9   1        P2=P2&0x1f|0xA0;
+  10   1        P2=P2&0x1f;
+  11   1      }
+  12          
+  13          void Led_Disp(unsigned char Led_v)
+  14          {
+  15   1        P0=~Led_v;
+  16   1        P2=P2&0x1f|0x80;
+  17   1        P2=P2&0x1f;
+  18   1      }
+  19          
+  20          void Timer1Init(void)   //@12.000MHz 16位自动重载 12T 1ms 定时器T1
+  21          {
+  22   1        AUXR &= 0xBF;   
+  23   1        TMOD &= 0x0F; 
+  24   1        TL1 = 0x18;   
+  25   1        TH1 = 0xFC;   
+  26   1        TF1 = 0;    
+  27   1        TR1 = 1;  
+  28   1        ET1 = 1;
+  29   1        EA  = 1;
+  30   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     66    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
