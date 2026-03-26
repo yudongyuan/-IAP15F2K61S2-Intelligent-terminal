@@ -1,4 +1,4 @@
-# -IAP15F2K61S2-Intelligent-terminal
+# IAP15F2K61S2-Intelligent-terminal
 ·编写 DS18B20 单总线驱动，设计温度补偿测距算法，测距精度稳定在 ±3cm 以内，校准值可动态调整
 
 ·构建循环缓冲区，每 50ms 采样一次距离值，通过按键触发，期间屏蔽其他按键操作以保证数据完整性 
